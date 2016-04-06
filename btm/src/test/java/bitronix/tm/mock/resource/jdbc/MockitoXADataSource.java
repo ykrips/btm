@@ -25,6 +25,7 @@ import static org.mockito.Mockito.*;
 import java.io.PrintWriter;
 import java.sql.*;
 import java.util.*;
+import java.util.logging.Logger;
 
 import javax.sql.*;
 import javax.transaction.xa.*;
@@ -50,6 +51,10 @@ public class MockitoXADataSource implements XADataSource {
     private SQLException getXAConnectionException;
     private static SQLException staticGetXAConnectionException;
     private static SQLException staticCloseXAConnectionException;
+
+    public Logger getParentLogger() throws SQLFeatureNotSupportedException {
+        throw new SQLFeatureNotSupportedException();
+    }
 
     public int getLoginTimeout() throws SQLException {
         return 0;

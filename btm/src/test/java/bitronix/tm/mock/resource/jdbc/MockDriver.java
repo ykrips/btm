@@ -22,15 +22,21 @@ package bitronix.tm.mock.resource.jdbc;
 
 import java.sql.Driver;
 import java.sql.SQLException;
+import java.sql.SQLFeatureNotSupportedException;
 import java.sql.Connection;
 import java.sql.DriverPropertyInfo;
 import java.util.Properties;
+import java.util.logging.Logger;
 
 /**
  *
  * @author lorban
  */
 public class MockDriver implements Driver {
+
+    public Logger getParentLogger() throws SQLFeatureNotSupportedException {
+        throw new SQLFeatureNotSupportedException();
+    }
 
     public int getMajorVersion() {
         return 0;
